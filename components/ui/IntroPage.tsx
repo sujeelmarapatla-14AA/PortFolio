@@ -15,10 +15,10 @@ export default function IntroPage({ onEnter }: IntroPageProps) {
   const [exiting, setExiting] = useState(false);
   const { triggerTransition } = useBubbleTransition();
 
-  const handleProceed = () => {
+  const handleProceed = (e?: React.MouseEvent) => {
     if (exiting) return;
     setExiting(true);
-    triggerTransition("hero");
+    triggerTransition("hero", e);
     setTimeout(() => {
       onEnter();
     }, 600);
@@ -62,7 +62,7 @@ export default function IntroPage({ onEnter }: IntroPageProps) {
 
             {/* Skip Intro Liquid Glass Button */}
             <LiquidGlassButton
-              onClick={handleProceed}
+              onClick={(e: React.MouseEvent) => handleProceed(e)}
               variant="light"
               className="px-5 py-2 text-xs font-bold uppercase tracking-widest text-gray-800"
               aria-label="Skip portfolio intro"
@@ -108,7 +108,7 @@ export default function IntroPage({ onEnter }: IntroPageProps) {
           {/* Bottom Bar: Enter Portfolio Liquid Glass Button */}
           <footer className="w-full max-w-7xl mx-auto flex flex-col items-center justify-center relative z-20 pb-4">
             <LiquidGlassButton
-              onClick={handleProceed}
+              onClick={(e: React.MouseEvent) => handleProceed(e)}
               variant="orange"
               className="px-8 md:px-10 py-3.5 md:py-4 text-xs md:text-sm font-extrabold uppercase tracking-widest text-white shadow-2xl"
               aria-label="Enter Portfolio"

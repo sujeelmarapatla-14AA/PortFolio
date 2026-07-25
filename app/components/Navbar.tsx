@@ -66,7 +66,7 @@ export default function Navbar() {
   const handleNavClick = (e: React.MouseEvent, sectionId: string) => {
     e.preventDefault();
     setActiveSection(sectionId);
-    triggerTransition(sectionId);
+    triggerTransition(sectionId, e);
   };
 
   return (
