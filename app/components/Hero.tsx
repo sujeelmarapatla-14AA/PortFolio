@@ -84,12 +84,12 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* Center & Right Visual: Text in Center/Left + Corner Positioned Avatar */}
+        {/* Center & Right Visual: Text in Center/Left + Corner Positioned Circular Avatar */}
         <div className="lg:col-span-9 relative flex items-center justify-end min-h-[420px] md:min-h-[480px]">
           {/* "I'M BORN TO CREATE |" Text positioned on the left/center */}
           <div
             aria-hidden="true"
-            className="absolute inset-0 flex flex-col justify-center items-start pl-2 md:pl-4 select-none pointer-events-none z-0 opacity-50"
+            className="absolute inset-0 flex flex-col justify-center items-start pl-2 md:pl-4 select-none pointer-events-none z-0 opacity-70"
           >
             <span className="font-condensed text-5xl sm:text-7xl md:text-8xl lg:text-[9.5rem] font-black tracking-tight text-outline-gray leading-none">
               I&apos;M BORN TO
@@ -99,8 +99,8 @@ export default function Hero() {
             </span>
           </div>
 
-          {/* Circular Avatar Container with Hover Thought Cloud Bubble */}
-          <div className="relative group ml-auto z-10">
+          {/* Perfect Circular Avatar Container with Hover Thought Cloud Bubble */}
+          <div className="relative group ml-auto z-10 cursor-target">
             {/* Thought Cloud Speech Bubble (Appears only on Avatar Hover) */}
             <div className="absolute -top-16 -left-10 md:-top-20 md:-left-16 z-30 opacity-0 group-hover:opacity-100 scale-75 group-hover:scale-100 -translate-y-2 group-hover:translate-y-0 transition-all duration-500 ease-out pointer-events-none select-none">
               <div className="relative bg-white text-black border-2 border-black/90 px-5 py-3 rounded-[24px] shadow-[0_20px_40px_rgba(0,0,0,0.18)] flex items-center gap-2.5 whitespace-nowrap">
@@ -118,19 +118,19 @@ export default function Hero() {
               </div>
             </div>
 
-            {/* Circular Avatar Frame */}
+            {/* Perfect Circle Avatar Frame */}
             <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.8 }}
-              className="w-64 h-64 sm:w-72 sm:h-72 md:w-[320px] md:h-[320px] lg:w-[350px] lg:h-[350px] rounded-full overflow-hidden border-4 border-white/90 shadow-[0_25px_60px_rgba(0,0,0,0.18)] bg-gradient-to-b from-[#182333] via-[#0f1724] to-[#0a0f18]"
+              className="relative w-64 h-64 sm:w-72 sm:h-72 md:w-[320px] md:h-[320px] lg:w-[350px] lg:h-[350px] rounded-full overflow-hidden border-4 border-white shadow-[0_25px_60px_rgba(0,0,0,0.25)] ring-4 ring-[#ff3b11]/30 bg-gradient-to-b from-[#182333] via-[#0f1724] to-[#0a0f18]"
             >
               <Image
                 src="/hero-avatar.png"
                 alt={`${name} 3D Character Avatar`}
                 fill
                 priority
-                className="object-cover object-top scale-105 group-hover:scale-110 transition-transform duration-700"
+                className="object-cover object-top scale-105 group-hover:scale-110 transition-transform duration-700 rounded-full"
               />
             </motion.div>
           </div>
