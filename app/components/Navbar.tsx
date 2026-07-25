@@ -71,7 +71,7 @@ export default function Navbar() {
 
   return (
     <>
-      {/* Top Left Text Logo (Fixed - Clean Typography without Orange Background Box) */}
+      {/* Top Left Text Logo (Fixed - Clean Typography) */}
       <div className="fixed top-5 left-5 md:left-10 z-50 flex items-center gap-2 pointer-events-auto">
         <a
           href="#hero"
@@ -92,32 +92,37 @@ export default function Navbar() {
         </a>
       </div>
 
-      {/* Floating Center Capsule Navbar */}
+      {/* Floating Center Capsule Navbar with Liquid Glass Effect */}
       <header className="fixed top-6 left-1/2 -translate-x-1/2 z-50">
-        <nav
-          className="bg-white/95 backdrop-blur-md border border-white/80 shadow-[0_12px_40px_rgba(0,0,0,0.12)] rounded-full p-1.5 flex items-center gap-1"
-          aria-label="Primary Navigation"
-        >
-          {navItems.map((item) => {
-            const isActive = activeSection === item.id;
-            return (
-              <a
-                key={item.href}
-                href={item.href}
-                onClick={(e) => handleNavClick(e, item.id)}
-                className={cn(
-                  "cursor-target flex items-center gap-2 px-4 md:px-5 py-2 rounded-full text-xs md:text-sm font-semibold transition-all duration-300 select-none",
-                  isActive
-                    ? "bg-[#ff3b11] text-white shadow-md shadow-[#ff3b11]/30"
-                    : "text-gray-500 hover:text-black hover:bg-gray-100/60"
-                )}
-              >
-                {getIcon(item.label)}
-                <span>{item.label}</span>
-              </a>
-            );
-          })}
-        </nav>
+        <div className="liquidGlass-wrapper rounded-full p-1.5 border border-white/80 shadow-[0_12px_40px_rgba(0,0,0,0.12)]">
+          <div className="liquidGlass-effect" />
+          <div className="liquidGlass-tint" />
+          <div className="liquidGlass-shine" />
+          <nav
+            className="liquidGlass-content flex items-center gap-1"
+            aria-label="Primary Navigation"
+          >
+            {navItems.map((item) => {
+              const isActive = activeSection === item.id;
+              return (
+                <a
+                  key={item.href}
+                  href={item.href}
+                  onClick={(e) => handleNavClick(e, item.id)}
+                  className={cn(
+                    "cursor-target flex items-center gap-2 px-4 md:px-5 py-2 rounded-full text-xs md:text-sm font-semibold transition-all duration-300 select-none",
+                    isActive
+                      ? "bg-[#ff3b11] text-white shadow-md shadow-[#ff3b11]/30"
+                      : "text-gray-700 hover:text-black hover:bg-white/60"
+                  )}
+                >
+                  {getIcon(item.label)}
+                  <span>{item.label}</span>
+                </a>
+              );
+            })}
+          </nav>
+        </div>
       </header>
     </>
   );

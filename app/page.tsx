@@ -12,6 +12,7 @@ import Footer from "./components/Footer";
 import TargetCursor from "@/components/ui/TargetCursor";
 import Waves from "@/components/ui/Waves";
 import IntroPage from "@/components/ui/IntroPage";
+import { LiquidGlassSVGFilter } from "@/components/ui/LiquidGlassButton";
 import { BlackBubbleTransitionProvider } from "@/components/ui/BlackBubbleTransition";
 
 export default function Home() {
@@ -19,6 +20,9 @@ export default function Home() {
 
   return (
     <BlackBubbleTransitionProvider>
+      {/* Global macOS Liquid Glass SVG Displacement Filter */}
+      <LiquidGlassSVGFilter />
+
       {/* Background Interactive Waves Animation */}
       <div className="fixed inset-0 pointer-events-none z-0">
         <Waves

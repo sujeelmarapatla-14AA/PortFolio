@@ -45,6 +45,61 @@
   -webkit-text-stroke: 2px #ffffff;
 }
 
+/* macOS LIQUID GLASS STYLES & BUTTON UTILITIES */
+.liquidGlass-wrapper {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12), 0 0 12px rgba(255, 255, 255, 0.2);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.4);
+}
+
+.liquidGlass-effect {
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  backdrop-filter: blur(8px);
+  filter: url(#glass-distortion);
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.liquidGlass-tint {
+  z-index: 1;
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.55);
+  pointer-events: none;
+}
+
+.liquidGlass-tint-orange {
+  z-index: 1;
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 59, 17, 0.92);
+  pointer-events: none;
+}
+
+.liquidGlass-shine {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  overflow: hidden;
+  box-shadow: inset 2px 2px 2px 0 rgba(255, 255, 255, 0.6),
+    inset -1px -1px 2px 1px rgba(255, 255, 255, 0.3);
+  pointer-events: none;
+}
+
+.liquidGlass-content {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
 /* Tilted Marquee Banner Animation */
 @keyframes marquee {
   0% {

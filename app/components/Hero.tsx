@@ -4,6 +4,7 @@ import Image from "next/image";
 import { name } from "@/data/content";
 import { motion } from "framer-motion";
 import Waves from "@/components/ui/Waves";
+import LiquidGlassButton from "@/components/ui/LiquidGlassButton";
 
 export default function Hero() {
   return (
@@ -39,16 +40,18 @@ export default function Hero() {
           <p className="text-xs md:text-sm text-gray-700 font-medium leading-relaxed">
             Hi, I&apos;m {name}. I bridge the gap between engineering and art to design immersive, high-performance web experiences.
           </p>
-          {/* GET IN TOUCH Button */}
-          <a
+          {/* GET IN TOUCH Liquid Glass Button */}
+          <LiquidGlassButton
+            as="a"
             href="#contact"
-            className="cursor-target inline-flex items-center gap-2 border border-black/80 rounded-full px-5 py-2 text-xs font-bold uppercase tracking-wider text-black hover:bg-black hover:text-white transition-all shadow-sm group"
+            variant="light"
+            className="px-6 py-2.5 text-xs font-extrabold uppercase tracking-wider text-black border border-black/20"
           >
             <span>GET IN TOUCH</span>
             <span className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform">
               ↗
             </span>
-          </a>
+          </LiquidGlassButton>
         </div>
       </div>
 

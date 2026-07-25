@@ -5,6 +5,7 @@ import { contact, name } from "@/data/content";
 import SectionWrapper from "./SectionWrapper";
 import { AtSymbolIcon, PaperAirplaneIcon } from "@heroicons/react/24/solid";
 import { motion } from "framer-motion";
+import LiquidGlassButton from "@/components/ui/LiquidGlassButton";
 
 export default function Contact() {
   const [email, setEmail] = useState("");
@@ -80,13 +81,14 @@ export default function Contact() {
             </div>
             {error && <p className="text-red-500 text-xs font-semibold pl-4">Please enter a valid email address.</p>}
 
-            <button
+            <LiquidGlassButton
               type="submit"
-              className="cursor-target w-full flex items-center justify-center gap-3 px-8 py-4 rounded-full font-extrabold text-sm uppercase tracking-wider text-white bg-[#ff3b11] hover:bg-[#e0310c] shadow-lg shadow-[#ff3b11]/25 transition-all duration-300 transform active:scale-95 cursor-pointer"
+              variant="orange"
+              className="w-full py-4 text-sm font-extrabold uppercase tracking-wider text-white shadow-xl"
             >
               <PaperAirplaneIcon className="w-5 h-5" />
               <span>SEND EMAIL</span>
-            </button>
+            </LiquidGlassButton>
           </form>
         </div>
 
@@ -103,7 +105,7 @@ export default function Contact() {
           </div>
         </div>
 
-        {/* Interactive Sticker Pill Buttons for ALL Social Links (GitHub, LinkedIn, Instagram, Email) */}
+        {/* Liquid Glass macOS Interactive Sticker Pill Buttons for ALL Social Links */}
         <div className="pt-12 pb-8 flex flex-wrap items-center justify-center gap-5 relative">
           {/* Circular Drag Me Badge */}
           <motion.div
@@ -113,47 +115,51 @@ export default function Contact() {
             <span>DRAG ME ✦</span>
           </motion.div>
 
-          {/* GITHUB Sticker Pill */}
-          <motion.a
-            whileHover={{ scale: 1.05, rotate: 3 }}
+          {/* GITHUB Liquid Glass Pill */}
+          <LiquidGlassButton
+            as="a"
             href={contact.social.github}
             target="_blank"
             rel="noopener noreferrer"
-            className="cursor-target bg-[#fafafa] hover:bg-[#ff3b11] hover:text-white text-black border border-gray-400/80 rounded-full px-7 py-3.5 font-extrabold text-xs tracking-wider uppercase shadow-md flex items-center gap-2 transition-colors duration-300"
+            variant="light"
+            className="px-7 py-3.5 text-xs font-extrabold tracking-wider uppercase text-black"
           >
             <span>GITHUB ↗</span>
-          </motion.a>
+          </LiquidGlassButton>
 
-          {/* LINKEDIN Sticker Pill */}
-          <motion.a
-            whileHover={{ scale: 1.05, rotate: -3 }}
+          {/* LINKEDIN Liquid Glass Pill */}
+          <LiquidGlassButton
+            as="a"
             href={contact.social.linkedin}
             target="_blank"
             rel="noopener noreferrer"
-            className="cursor-target bg-[#fafafa] hover:bg-[#0077b5] hover:text-white text-black border border-gray-400/80 rounded-full px-7 py-3.5 font-extrabold text-xs tracking-wider uppercase shadow-md flex items-center gap-2 transition-colors duration-300"
+            variant="light"
+            className="px-7 py-3.5 text-xs font-extrabold tracking-wider uppercase text-black"
           >
             <span>LINKEDIN ↗</span>
-          </motion.a>
+          </LiquidGlassButton>
 
-          {/* INSTAGRAM Sticker Pill */}
-          <motion.a
-            whileHover={{ scale: 1.05, rotate: 2 }}
+          {/* INSTAGRAM Liquid Glass Pill */}
+          <LiquidGlassButton
+            as="a"
             href={contact.social.instagram}
             target="_blank"
             rel="noopener noreferrer"
-            className="cursor-target bg-[#fafafa] hover:bg-[#e1306c] hover:text-white text-black border border-gray-400/80 rounded-full px-7 py-3.5 font-extrabold text-xs tracking-wider uppercase shadow-md flex items-center gap-2 transition-colors duration-300"
+            variant="light"
+            className="px-7 py-3.5 text-xs font-extrabold tracking-wider uppercase text-black"
           >
             <span>INSTAGRAM ↗</span>
-          </motion.a>
+          </LiquidGlassButton>
 
-          {/* EMAIL ME Sticker Pill */}
-          <motion.a
-            whileHover={{ scale: 1.05, rotate: -2 }}
+          {/* EMAIL ME Liquid Glass Pill */}
+          <LiquidGlassButton
+            as="a"
             href={`mailto:${contact.email}`}
-            className="cursor-target bg-[#fafafa] hover:bg-[#7c3aed] hover:text-white text-black border border-gray-400/80 rounded-full px-7 py-3.5 font-extrabold text-xs tracking-wider uppercase shadow-md flex items-center gap-2 transition-colors duration-300"
+            variant="light"
+            className="px-7 py-3.5 text-xs font-extrabold tracking-wider uppercase text-black"
           >
             <span>EMAIL ME ↗</span>
-          </motion.a>
+          </LiquidGlassButton>
         </div>
       </div>
     </SectionWrapper>

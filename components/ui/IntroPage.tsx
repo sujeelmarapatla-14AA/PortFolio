@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import Shuffle from "@/components/ui/Shuffle";
 import Waves from "@/components/ui/Waves";
 import { useBubbleTransition } from "@/components/ui/BlackBubbleTransition";
+import LiquidGlassButton from "@/components/ui/LiquidGlassButton";
 
 interface IntroPageProps {
   onEnter: () => void;
@@ -50,7 +51,7 @@ export default function IntroPage({ onEnter }: IntroPageProps) {
             />
           </div>
 
-          {/* Top Bar: Brand Star & Skip Intro */}
+          {/* Top Bar: Brand Star & Skip Intro Liquid Glass Button */}
           <header className="w-full max-w-7xl mx-auto flex items-center justify-between relative z-20">
             <div className="flex items-center gap-2">
               <span className="text-[#ff3b11] text-3xl font-bold">✦</span>
@@ -59,15 +60,15 @@ export default function IntroPage({ onEnter }: IntroPageProps) {
               </span>
             </div>
 
-            {/* Skip Intro Button */}
-            <button
+            {/* Skip Intro Liquid Glass Button */}
+            <LiquidGlassButton
               onClick={handleProceed}
-              type="button"
-              className="cursor-target text-xs font-bold uppercase tracking-widest text-gray-600 hover:text-black transition-colors focus-ring px-4 py-2 rounded-full border border-black/15 bg-white/40 backdrop-blur-md shadow-sm"
+              variant="light"
+              className="px-5 py-2 text-xs font-bold uppercase tracking-widest text-gray-800"
               aria-label="Skip portfolio intro"
             >
-              Skip intro ↗
-            </button>
+              <span>Skip intro ↗</span>
+            </LiquidGlassButton>
           </header>
 
           {/* Center Quote Display: “DREAM , DESIGN , DEVELOP” */}
@@ -104,19 +105,19 @@ export default function IntroPage({ onEnter }: IntroPageProps) {
             </motion.div>
           </main>
 
-          {/* Bottom Bar: Enter Portfolio Button */}
+          {/* Bottom Bar: Enter Portfolio Liquid Glass Button */}
           <footer className="w-full max-w-7xl mx-auto flex flex-col items-center justify-center relative z-20 pb-4">
-            <button
+            <LiquidGlassButton
               onClick={handleProceed}
-              type="button"
-              className="cursor-target group bg-[#ff3b11] text-white px-8 md:px-10 py-3.5 md:py-4 rounded-full font-extrabold text-xs md:text-sm uppercase tracking-widest shadow-2xl hover:scale-105 hover:bg-[#d9300c] transition-all flex items-center gap-3 focus-ring"
+              variant="orange"
+              className="px-8 md:px-10 py-3.5 md:py-4 text-xs md:text-sm font-extrabold uppercase tracking-widest text-white shadow-2xl"
               aria-label="Enter Portfolio"
             >
               <span>ENTER PORTFOLIO</span>
               <span className="group-hover:translate-x-1.5 transition-transform text-lg leading-none">
                 →
               </span>
-            </button>
+            </LiquidGlassButton>
           </footer>
         </motion.div>
       )}

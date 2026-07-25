@@ -5,6 +5,7 @@ import SectionWrapper from "./SectionWrapper";
 import { CodeBracketIcon, ArrowTopRightOnSquareIcon, ArrowRightIcon } from "@heroicons/react/24/outline";
 import { motion } from "framer-motion";
 import ElectricBorder from "@/components/ui/ElectricBorder";
+import LiquidGlassButton from "@/components/ui/LiquidGlassButton";
 
 export default function Projects() {
   const cardGradients = [
@@ -65,16 +66,18 @@ export default function Projects() {
                       </span>
 
                       {project.liveUrl ? (
-                        <a
+                        <LiquidGlassButton
+                          as="a"
                           href={project.liveUrl}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="w-12 h-12 rounded-full bg-white/20 hover:bg-white text-white hover:text-black flex items-center justify-center transition-colors border border-white/30 backdrop-blur-md shadow-md"
+                          variant="light"
+                          className="w-11 h-11 !p-0 rounded-full text-white hover:text-black border border-white/40"
                         >
                           <ArrowRightIcon className="w-5 h-5" />
-                        </a>
+                        </LiquidGlassButton>
                       ) : (
-                        <div className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center text-white/60 border border-white/15">
+                        <div className="w-11 h-11 rounded-full bg-white/10 flex items-center justify-center text-white/60 border border-white/15">
                           <ArrowRightIcon className="w-5 h-5 opacity-40" />
                         </div>
                       )}
@@ -104,25 +107,29 @@ export default function Projects() {
                       </div>
 
                       <div className="flex items-center justify-between gap-3">
-                        <a
+                        <LiquidGlassButton
+                          as="a"
                           href={project.codeUrl}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="inline-flex items-center gap-2 text-xs font-extrabold uppercase tracking-wider text-white hover:text-white/80 transition-colors"
+                          variant="light"
+                          className="px-4 py-2 text-[11px] font-extrabold uppercase tracking-wider text-black border border-white/40"
                         >
                           <CodeBracketIcon className="w-4 h-4" />
                           <span>Code Repository</span>
-                        </a>
-                        {project.liveUrl && (
-                          <a
+                        </LiquidGlassButton>
+                        {project.liveUrl && project.liveUrl !== "#" && (
+                          <LiquidGlassButton
+                            as="a"
                             href={project.liveUrl}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="inline-flex items-center gap-1 text-xs font-extrabold uppercase tracking-wider text-white hover:text-white/80 transition-colors"
+                            variant="light"
+                            className="px-4 py-2 text-[11px] font-extrabold uppercase tracking-wider text-black border border-white/40"
                           >
                             <ArrowTopRightOnSquareIcon className="w-4 h-4" />
                             <span>Live Demo</span>
-                          </a>
+                          </LiquidGlassButton>
                         )}
                       </div>
                     </div>
