@@ -110,9 +110,9 @@ export const projects = [
   {
     title: "OneProfile",
     description:
-      "An AI-powered edtech platform for Class 11-12 students and entrance exam aspirants (JEE, EAPCET, BITSAT). Features a master profile and document vault that auto-fills over 50 different exam and scholarship applications.",
+      "An AI-powered edtech platform for Class 11-12 students and entrance exam aspirants (JEE, EAPCET, BITSAT). Features a master profile and document vault that auto-fills over 50 different exam applications.",
     stack: ["Next.js", "FastAPI", "Python", "AI/ML"],
-    codeUrl: "#",
+    codeUrl: "https://github.com/sujeelmarapatla-14AA/PortFolio",
     liveUrl: "#",
     image: "/oneprofile-screenshot.png",
   },
@@ -121,9 +121,18 @@ export const projects = [
     description:
       "A real-time hospital queue and bed management system implemented for a major hospital in Hyderabad. Includes role-based access control, live bed status tracking with Socket.io, and an analytics dashboard for administrators.",
     stack: ["Node.js", "Express", "Socket.io", "Chart.js"],
-    codeUrl: "#",
+    codeUrl: "https://github.com/sujeelmarapatla-14AA/PortFolio",
     liveUrl: null,
     image: "/careq-screenshot.png",
+  },
+  {
+    title: "PortFolio Web App",
+    description:
+      "A studio-grade developer portfolio featuring interactive React Bits 3D canvas physics, custom cursor animations, dark mode studio cards, and responsive glassmorphism.",
+    stack: ["Next.js 16", "React 19", "Tailwind CSS", "GSAP"],
+    codeUrl: "https://github.com/sujeelmarapatla-14AA/PortFolio",
+    liveUrl: "https://github.com/sujeelmarapatla-14AA/PortFolio",
+    image: "/hero-avatar.png",
   },
 ];
 
