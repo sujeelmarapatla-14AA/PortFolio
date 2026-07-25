@@ -58,6 +58,8 @@ export default function About() {
               <span>MLR Institute of Technology</span>
               <span>•</span>
               <span>B.Tech CSE (AI & ML)</span>
+              <span>•</span>
+              <span className="text-[#ff3b11] font-mono">25R21A6637</span>
             </div>
           </motion.div>
 
@@ -72,7 +74,7 @@ export default function About() {
             {/* Hanging Lanyard Strap Design */}
             <div className="flex flex-col items-center mb-3">
               {/* Lanyard Fabric Strap */}
-              <div className="w-16 h-10 border-x-4 border-[#ff3b11] bg-gradient-to-b from-[#ff3b11]/80 to-[#d9300c] shadow-md rounded-b-md" />
+              <div className="w-16 h-10 border-x-4 border-[#ff3b11] bg-gradient-to-b from-[#ff3b11] to-[#d9300c] shadow-md rounded-b-md" />
               {/* Metallic Clip Ring */}
               <div className="w-8 h-3.5 bg-gradient-to-r from-gray-400 via-white to-gray-400 border border-gray-500 rounded-sm shadow-md -mt-1 z-10" />
             </div>
@@ -94,8 +96,8 @@ export default function About() {
                 </span>
               </div>
 
-              {/* Student Photo */}
-              <div className="relative w-full h-56 md:h-64 rounded-2xl overflow-hidden border-2 border-gray-100 shadow-md mb-4 bg-gray-100">
+              {/* Photo in Premium Studio Frame with Glow Ring */}
+              <div className="relative w-full h-56 md:h-64 rounded-2xl overflow-hidden border-4 border-white shadow-xl ring-2 ring-[#ff3b11]/30 mb-4 bg-gradient-to-b from-[#182333] via-[#0f1724] to-[#0a0f18] group-hover:ring-[#ff3b11] transition-all duration-500">
                 <Image
                   src="/sujeel-photo.jpg"
                   alt={name}
@@ -105,19 +107,24 @@ export default function About() {
                 />
               </div>
 
-              {/* Student Credentials & Details */}
-              <div className="space-y-1 text-left">
-                <div className="flex items-center justify-between">
+              {/* Student Credentials & Details with Roll No */}
+              <div className="space-y-2 text-left">
+                <div className="flex items-center justify-between gap-2">
                   <h4 className="font-sans text-xl font-extrabold text-black">
                     {name}
                   </h4>
-                  <span className="text-[10px] font-mono font-bold text-gray-500 bg-gray-100 px-2 py-0.5 rounded">
+                  <span className="text-[10px] font-mono font-extrabold text-white bg-[#ff3b11] px-2.5 py-0.5 rounded-md shadow-sm">
                     2025 - 2029
                   </span>
                 </div>
-                <p className="text-xs font-bold text-[#ff3b11] tracking-wide uppercase">
-                  B.Tech CSE (AI & Machine Learning)
-                </p>
+                <div className="flex items-center justify-between text-xs gap-1">
+                  <p className="font-bold text-[#ff3b11] tracking-wide uppercase">
+                    B.Tech CSE (AI & ML)
+                  </p>
+                  <span className="text-[10px] font-mono font-extrabold text-gray-800 bg-gray-100 px-2 py-0.5 rounded border border-gray-300">
+                    HT NO: 25R21A6637
+                  </span>
+                </div>
                 <p className="text-[11px] font-medium text-gray-500">
                   MLR Institute of Technology, Hyderabad
                 </p>
