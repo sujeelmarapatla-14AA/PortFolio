@@ -25,12 +25,11 @@ export default function Projects() {
           </h2>
         </div>
 
-        {/* 3 Electric Border Gradient Project Cards */}
+        {/* 3 Uniform Electric Border Gradient Project Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
           {projects.map((project, index) => {
             const gradientClass = cardGradients[index % cardGradients.length];
             const electricColor = electricColors[index % electricColors.length];
-            const isArchCard = index === 2;
 
             return (
               <motion.div
@@ -48,13 +47,7 @@ export default function Projects() {
                   borderRadius={32}
                   className="w-full h-full"
                 >
-                  <div
-                    className={`group relative flex flex-col justify-between p-8 text-white bg-gradient-to-br ${gradientClass} min-h-[440px] h-full shadow-2xl transition-all duration-500 hover:-translate-y-1 ${
-                      isArchCard
-                        ? "card-arch border border-white/20"
-                        : "rounded-[32px] border border-white/20"
-                    }`}
-                  >
+                  <div className={`group relative flex flex-col justify-between p-8 text-white bg-gradient-to-br ${gradientClass} min-h-[440px] h-full shadow-2xl transition-all duration-500 hover:-translate-y-1 rounded-[32px] border border-white/20`}>
                     {/* Background Watermark Number / Icon */}
                     <div
                       aria-hidden="true"
