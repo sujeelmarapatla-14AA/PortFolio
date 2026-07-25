@@ -1,3 +1,6 @@
+"use client";
+
+import { useState } from "react";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import About from "./components/About";
@@ -8,9 +11,12 @@ import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 import TargetCursor from "@/components/ui/TargetCursor";
 import Waves from "@/components/ui/Waves";
+import IntroPage from "@/components/ui/IntroPage";
 import { BlackBubbleTransitionProvider } from "@/components/ui/BlackBubbleTransition";
 
 export default function Home() {
+  const [showIntro, setShowIntro] = useState(true);
+
   return (
     <BlackBubbleTransitionProvider>
       {/* Background Interactive Waves Animation */}
@@ -39,6 +45,11 @@ export default function Home() {
         cursorColorOnTarget="#ff3b11"
         targetSelector=".cursor-target, a, button"
       />
+
+      {/* Full-Screen Portfolio Intro Overlay */}
+      {showIntro && <IntroPage onEnter={() => setShowIntro(false)} />}
+
+      {/* Existing Landing Page Content */}
       <Navbar />
       <main className="relative z-10">
         <Hero />

@@ -1,0 +1,13 @@
+.shuffle-parent {
+  display: inline-block;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  will-change: transform;
+  line-height: 1.1;
+}
+
+.shuffle-char {
+  display: inline-block;
+  text-align: center;
+  transition: color 0.3s ease;
+}
