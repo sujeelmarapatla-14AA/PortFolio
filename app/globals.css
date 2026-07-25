@@ -1,26 +1,118 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-background: #e5e5e7;
+  --color-foreground: #111111;
+  --font-sans: var(--font-sans), "Plus Jakarta Sans", sans-serif;
+  --font-condensed: var(--font-condensed), "Bebas Neue", sans-serif;
+  --font-signature: var(--font-signature), "Caveat", cursive;
+  --font-devanagari: var(--font-devanagari), "Rozha One", serif;
+  --color-orange: #ff3b11;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* Custom Font Utilities */
+.font-condensed {
+  font-family: var(--font-condensed), "Bebas Neue", sans-serif;
+}
+
+.font-signature {
+  font-family: var(--font-signature), "Caveat", cursive;
+}
+
+.font-devanagari {
+  font-family: var(--font-devanagari), "Rozha One", serif;
+}
+
+/* Clean Studio Background (No Static Grid Boxes) */
+.bg-perspective-grid {
+  background-color: #e5e5e7;
+  position: relative;
+}
+
+/* Outline Text Effect */
+.text-outline-gray {
+  color: transparent;
+  -webkit-text-stroke: 1.5px rgba(0, 0, 0, 0.15);
+}
+
+.text-outline-orange {
+  color: transparent;
+  -webkit-text-stroke: 1.5px #ff3b11;
+}
+
+.text-outline-white {
+  color: transparent;
+  -webkit-text-stroke: 2px #ffffff;
+}
+
+/* Tilted Marquee Banner Animation */
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
   }
 }
 
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 25s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+/* Custom Card Shapes */
+.card-notch {
+  clip-path: polygon(
+    0 0, 
+    100% 0, 
+    100% calc(100% - 40px), 
+    calc(100% - 40px) 100%, 
+    0 100%
+  );
+}
+
+.card-arch {
+  border-top-left-radius: 140px;
+  border-top-right-radius: 140px;
+  border-bottom-left-radius: 28px;
+  border-bottom-right-radius: 28px;
+}
+
+.card-notched-steps {
+  clip-path: polygon(
+    0 0,
+    100% 0,
+    100% 65%,
+    85% 65%,
+    85% 82%,
+    70% 82%,
+    70% 100%,
+    0 100%
+  );
+}
+
+/* Focus Ring */
+.focus-ring {
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+  transition: outline-color 0.15s ease;
+}
+.focus-ring:focus-visible {
+  outline-color: #ff3b11;
+}
+
+/* Smooth Scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--color-background);
+  color: var(--color-foreground);
+  font-family: var(--font-sans);
 }

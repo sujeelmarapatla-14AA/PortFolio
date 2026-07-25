@@ -1,0 +1,124 @@
+"use client";
+
+import { useState, useEffect } from "react";
+import { cn } from "@/lib/utils";
+import { footer } from "@/data/content";
+import { useBubbleTransition } from "@/components/ui/BlackBubbleTransition";
+import {
+  HomeIcon,
+  UserIcon,
+  WrenchScrewdriverIcon,
+  BriefcaseIcon,
+  EnvelopeIcon,
+} from "@heroicons/react/24/outline";
+
+export default function Navbar() {
+  const [activeSection, setActiveSection] = useState("hero");
+  const { triggerTransition } = useBubbleTransition();
+
+  useEffect(() => {
+    const sections = ["hero", "about", "skills", "projects", "contact"];
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY + 200;
+      for (const sectionId of sections) {
+        const el = document.getElementById(sectionId);
+        if (el) {
+          const top = el.offsetTop;
+          const height = el.offsetHeight;
+          if (scrollPosition >= top && scrollPosition < top + height) {
+            setActiveSection(sectionId);
+            break;
+          }
+        }
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const getIcon = (label: string) => {
+    switch (label.toLowerCase()) {
+      case "home":
+        return <HomeIcon className="w-4 h-4" />;
+      case "about":
+        return <UserIcon className="w-4 h-4" />;
+      case "skills":
+        return <WrenchScrewdriverIcon className="w-4 h-4" />;
+      case "projects":
+        return <BriefcaseIcon className="w-4 h-4" />;
+      case "contact":
+        return <EnvelopeIcon className="w-4 h-4" />;
+      default:
+        return null;
+    }
+  };
+
+  const navItems = [
+    { label: "Home", href: "#hero", id: "hero" },
+    ...footer.nav.map((item) => ({
+      label: item.label,
+      href: item.href,
+      id: item.href.replace("#", ""),
+    })),
+  ];
+
+  const handleNavClick = (e: React.MouseEvent, sectionId: string) => {
+    e.preventDefault();
+    setActiveSection(sectionId);
+    triggerTransition(sectionId);
+  };
+
+  return (
+    <>
+      {/* Top Left Text Logo (Fixed - Clean Typography without Orange Background Box) */}
+      <div className="fixed top-5 left-5 md:left-10 z-50 flex items-center gap-2 pointer-events-auto">
+        <a
+          href="#hero"
+          onClick={(e) => handleNavClick(e, "hero")}
+          className="flex flex-col items-start group focus-ring rounded-lg cursor-target select-none"
+        >
+          <div className="flex items-center gap-2">
+            <span className="text-[#ff3b11] text-3xl md:text-4xl font-bold transition-transform group-hover:rotate-45 duration-300">
+              ✦
+            </span>
+            <span className="font-condensed text-4xl md:text-5xl font-black text-[#ff3b11] tracking-wider uppercase leading-none">
+              PORTFOLIO
+            </span>
+          </div>
+          <span className="text-[10px] md:text-[11px] font-sans font-extrabold tracking-widest text-[#ff3b11] uppercase pl-7 leading-tight mt-0.5">
+            EMPOWER YOUR ACADEMIC JOURNEY
+          </span>
+        </a>
+      </div>
+
+      {/* Floating Center Capsule Navbar */}
+      <header className="fixed top-6 left-1/2 -translate-x-1/2 z-50">
+        <nav
+          className="bg-white/95 backdrop-blur-md border border-white/80 shadow-[0_12px_40px_rgba(0,0,0,0.12)] rounded-full p-1.5 flex items-center gap-1"
+          aria-label="Primary Navigation"
+        >
+          {navItems.map((item) => {
+            const isActive = activeSection === item.id;
+            return (
+              <a
+                key={item.href}
+                href={item.href}
+                onClick={(e) => handleNavClick(e, item.id)}
+                className={cn(
+                  "cursor-target flex items-center gap-2 px-4 md:px-5 py-2 rounded-full text-xs md:text-sm font-semibold transition-all duration-300 select-none",
+                  isActive
+                    ? "bg-[#ff3b11] text-white shadow-md shadow-[#ff3b11]/30"
+                    : "text-gray-500 hover:text-black hover:bg-gray-100/60"
+                )}
+              >
+                {getIcon(item.label)}
+                <span>{item.label}</span>
+              </a>
+            );
+          })}
+        </nav>
+      </header>
+    </>
+  );
+}
