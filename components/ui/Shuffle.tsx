@@ -14,7 +14,7 @@ export interface ShuffleProps {
   ease?: string;
   threshold?: number;
   rootMargin?: string;
-  tag?: keyof JSX.IntrinsicElements;
+  tag?: React.ElementType;
   textAlign?: React.CSSProperties["textAlign"];
   onShuffleComplete?: () => void;
   shuffleTimes?: number;
@@ -80,7 +80,6 @@ const Shuffle: React.FC<ShuffleProps> = ({
       randomScrambles.push(targetChar);
 
       let count = 0;
-      const interval = duration / (shuffleTimes + 1);
 
       timeline.to(
         el,
