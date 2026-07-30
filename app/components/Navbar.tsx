@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import { cn } from "@/lib/utils";
 import { footer } from "@/data/content";
-import { useBubbleTransition } from "@/components/ui/BlackBubbleTransition";
+import { useWavyTransition } from "@/components/ui/WavyPageTransition";
 import {
   HomeIcon,
   UserIcon,
@@ -14,7 +14,7 @@ import {
 
 export default function Navbar() {
   const [activeSection, setActiveSection] = useState("hero");
-  const { triggerTransition } = useBubbleTransition();
+  const { triggerTransition } = useWavyTransition();
 
   useEffect(() => {
     const sections = ["hero", "about", "skills", "projects", "contact"];

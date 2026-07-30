@@ -13,13 +13,13 @@ import TargetCursor from "@/components/ui/TargetCursor";
 import Waves from "@/components/ui/Waves";
 import IntroPage from "@/components/ui/IntroPage";
 import { LiquidGlassSVGFilter } from "@/components/ui/LiquidGlassButton";
-import { BlackBubbleTransitionProvider } from "@/components/ui/BlackBubbleTransition";
+import { WavyPageTransitionProvider } from "@/components/ui/WavyPageTransition";
 
 export default function Home() {
   const [showIntro, setShowIntro] = useState(true);
 
   return (
-    <BlackBubbleTransitionProvider>
+    <WavyPageTransitionProvider>
       {/* Global macOS Liquid Glass SVG Displacement Filter */}
       <LiquidGlassSVGFilter />
 
@@ -64,6 +64,6 @@ export default function Home() {
         <Contact />
       </main>
       <Footer />
-    </BlackBubbleTransitionProvider>
+    </WavyPageTransitionProvider>
   );
 }

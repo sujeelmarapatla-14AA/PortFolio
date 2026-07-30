@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Shuffle from "@/components/ui/Shuffle";
 import Waves from "@/components/ui/Waves";
-import { useBubbleTransition } from "@/components/ui/BlackBubbleTransition";
+import { useWavyTransition } from "@/components/ui/WavyPageTransition";
 import LiquidGlassButton from "@/components/ui/LiquidGlassButton";
 
 interface IntroPageProps {
@@ -13,7 +13,7 @@ interface IntroPageProps {
 
 export default function IntroPage({ onEnter }: IntroPageProps) {
   const [exiting, setExiting] = useState(false);
-  const { triggerTransition } = useBubbleTransition();
+  const { triggerTransition } = useWavyTransition();
 
   const handleProceed = (e?: React.MouseEvent) => {
     if (exiting) return;
