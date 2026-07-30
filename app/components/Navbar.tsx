@@ -71,8 +71,8 @@ export default function Navbar() {
 
   return (
     <>
-      {/* Top Left Text Logo (Fixed - Clean Typography) */}
-      <div className="fixed top-5 left-5 md:left-10 z-50 flex items-center gap-2 pointer-events-auto">
+      {/* Top Left Text Logo (Positioned at top of page only) */}
+      <div className="absolute top-6 left-5 md:left-10 z-40 flex items-center gap-2 pointer-events-auto">
         <a
           href="#hero"
           onClick={(e) => handleNavClick(e, "hero")}
