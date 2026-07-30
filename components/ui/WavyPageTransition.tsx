@@ -16,32 +16,39 @@ const WavyTransitionContext = createContext<WavyTransitionContextType>({
 export const useWavyTransition = () => useContext(WavyTransitionContext);
 export const useBubbleTransition = useWavyTransition; // Alias for backward compatibility
 
-// SVG Path definitions for 3D Abstract Wavy Ribbon morphing (viewBox: 0 0 1000 1000)
-const hiddenBottom = "M 0 1000 C 300 1000, 700 1000, 1000 1000 L 1000 1000 L 0 1000 Z";
-const fullCover = "M 0 -100 L 1000 -100 L 1000 1000 L 0 1000 Z";
-const hiddenTop = "M 0 -100 L 1000 -100 L 1000 -100 C 700 -100, 300 -100, 0 -100 Z";
+// ---------------------------------------------------------------------------
+// Consistent SVG Path Structure:
+// "M 0 topY L 1000 topY L 1000 bottomY C c1x c1y, c2x c2y, 0 bottomY Z"
+// Having identical command types across all keyframes ensures 100% smooth,
+// glitch-free SVG morphing during both entry and exit.
+// ---------------------------------------------------------------------------
 
-// Ribbon 1 (Soft Golden-Orange 3D Wave Layer)
-const ribbon1Rising = "M 0 380 C 280 120, 680 620, 1000 280 L 1000 1000 L 0 1000 Z";
-const ribbon1Exiting = "M 0 -100 L 1000 -100 L 1000 380 C 680 120, 280 580, 0 200 Z";
+// Shared States
+const hiddenBottom = "M 0 1100 L 1000 1100 L 1000 1100 C 666 1100, 333 1100, 0 1100 Z";
+const fullCover    = "M 0 -100 L 1000 -100 L 1000 1100 C 666 1100, 333 1100, 0 1100 Z";
+const hiddenTop    = "M 0 -100 L 1000 -100 L 1000 -100 C 666 -100, 333 -100, 0 -100 Z";
 
-// Ribbon 2 (Warm Tangerine Orange 3D Wave Layer)
-const ribbon2Rising = "M 0 470 C 220 680, 580 180, 1000 420 L 1000 1000 L 0 1000 Z";
-const ribbon2Exiting = "M 0 -100 L 1000 -100 L 1000 470 C 580 180, 220 680, 0 300 Z";
+// Ribbon 1 (Golden Sunset Orange Layer)
+const ribbon1Rising  = "M 0 1100 L 1000 1100 L 1000 400 C 700 150, 300 650, 0 300 Z";
+const ribbon1Exiting = "M 0 -100 L 1000 -100 L 1000 350 C 700 100, 300 550, 0 250 Z";
 
-// Ribbon 3 (Vibrant Citrus Orange 3D Wave Layer)
-const ribbon3Rising = "M 0 560 C 380 260, 720 720, 1000 500 L 1000 1000 L 0 1000 Z";
-const ribbon3Exiting = "M 0 -100 L 1000 -100 L 1000 560 C 720 260, 380 680, 0 400 Z";
+// Ribbon 2 (Warm Tangerine Orange Layer)
+const ribbon2Rising  = "M 0 1100 L 1000 1100 L 1000 480 C 600 200, 250 720, 0 380 Z";
+const ribbon2Exiting = "M 0 -100 L 1000 -100 L 1000 450 C 600 180, 250 680, 0 320 Z";
 
-// Ribbon 4 (Foreground Signature Electric Orange 3D Wave Layer)
-const ribbon4Rising = "M 0 650 C 250 420, 750 680, 1000 580 L 1000 1000 L 0 1000 Z";
-const ribbon4Exiting = "M 0 -100 L 1000 -100 L 1000 650 C 750 350, 250 620, 0 500 Z";
+// Ribbon 3 (Vibrant Citrus Orange Layer)
+const ribbon3Rising  = "M 0 1100 L 1000 1100 L 1000 550 C 750 280, 350 750, 0 450 Z";
+const ribbon3Exiting = "M 0 -100 L 1000 -100 L 1000 520 C 750 240, 350 720, 0 400 Z";
+
+// Ribbon 4 (Foreground Signature Electric Orange Layer)
+const ribbon4Rising  = "M 0 1100 L 1000 1100 L 1000 620 C 700 380, 200 650, 0 520 Z";
+const ribbon4Exiting = "M 0 -100 L 1000 -100 L 1000 600 C 700 320, 200 600, 0 480 Z";
 
 export function WavyPageTransitionProvider({ children }: { children: React.ReactNode }) {
   const [isAnimating, setIsAnimating] = useState(false);
 
   const triggerTransition = useCallback((targetSectionId: string) => {
-    // Check prefers-reduced-motion
+    // Respect prefers-reduced-motion
     if (typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
       const el = document.getElementById(targetSectionId);
       if (el) {
@@ -53,7 +60,7 @@ export function WavyPageTransitionProvider({ children }: { children: React.React
     if (isAnimating) return;
     setIsAnimating(true);
 
-    // Phase 2: Instant scroll when screen is fully covered by liquid orange 3D waves
+    // Instant scroll when screen is 100% covered by waves
     setTimeout(() => {
       const el = document.getElementById(targetSectionId);
       if (el) {
@@ -61,10 +68,10 @@ export function WavyPageTransitionProvider({ children }: { children: React.React
       }
     }, 550);
 
-    // Phase 3: Complete transition after waves exit
+    // Complete transition and cleanup
     setTimeout(() => {
       setIsAnimating(false);
-    }, 1180);
+    }, 1200);
   }, [isAnimating]);
 
   return (
@@ -74,19 +81,25 @@ export function WavyPageTransitionProvider({ children }: { children: React.React
       {/* 3D Abstract Orange Wavy Page Transition Overlay */}
       <AnimatePresence>
         {isAnimating && (
-          <div className="fixed inset-0 z-[99999] pointer-events-auto select-none overflow-hidden bg-transparent">
+          <motion.div
+            initial={{ opacity: 1 }}
+            animate={{ opacity: [1, 1, 1, 1, 0] }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 1.2, times: [0, 0.5, 0.8, 0.92, 1], ease: "easeInOut" }}
+            className="fixed inset-0 z-[99999] pointer-events-auto select-none overflow-hidden bg-transparent"
+          >
             <svg
               className="w-full h-full block"
               viewBox="0 0 1000 1000"
               preserveAspectRatio="none"
             >
               <defs>
-                {/* 3D Depth Shadows for Layered Orange Ribbons */}
+                {/* Soft 3D Depth Shadows for Layered Orange Ribbons */}
                 <filter id="orange-depth-shadow-soft" x="-20%" y="-20%" width="140%" height="140%">
-                  <feDropShadow dx="0" dy="-10" stdDeviation="16" floodColor="#e65100" floodOpacity="0.45" />
+                  <feDropShadow dx="0" dy="-8" stdDeviation="12" floodColor="#e65100" floodOpacity="0.4" />
                 </filter>
                 <filter id="orange-depth-shadow-strong" x="-20%" y="-20%" width="140%" height="140%">
-                  <feDropShadow dx="0" dy="-12" stdDeviation="20" floodColor="#ff3b11" floodOpacity="0.6" />
+                  <feDropShadow dx="0" dy="-10" stdDeviation="16" floodColor="#ff3b11" floodOpacity="0.5" />
                 </filter>
 
                 {/* Pure Orange Shades Gradients */}
@@ -126,12 +139,12 @@ export function WavyPageTransitionProvider({ children }: { children: React.React
                 filter="url(#orange-depth-shadow-soft)"
                 initial={{ d: hiddenBottom }}
                 animate={{
-                  d: [hiddenBottom, ribbon1Rising, fullCover, fullCover, ribbon1Exiting, hiddenTop],
+                  d: [hiddenBottom, ribbon1Rising, fullCover, ribbon1Exiting, hiddenTop],
                 }}
                 transition={{
-                  duration: 1.18,
-                  times: [0, 0.32, 0.46, 0.56, 0.82, 1],
-                  ease: [0.76, 0, 0.24, 1],
+                  duration: 1.2,
+                  times: [0, 0.32, 0.5, 0.82, 1],
+                  ease: [0.65, 0, 0.35, 1],
                 }}
               />
 
@@ -142,13 +155,13 @@ export function WavyPageTransitionProvider({ children }: { children: React.React
                 filter="url(#orange-depth-shadow-soft)"
                 initial={{ d: hiddenBottom }}
                 animate={{
-                  d: [hiddenBottom, ribbon2Rising, fullCover, fullCover, ribbon2Exiting, hiddenTop],
+                  d: [hiddenBottom, ribbon2Rising, fullCover, ribbon2Exiting, hiddenTop],
                 }}
                 transition={{
-                  duration: 1.18,
-                  delay: 0.04,
-                  times: [0, 0.34, 0.48, 0.58, 0.84, 1],
-                  ease: [0.76, 0, 0.24, 1],
+                  duration: 1.2,
+                  delay: 0.03,
+                  times: [0, 0.34, 0.52, 0.84, 1],
+                  ease: [0.65, 0, 0.35, 1],
                 }}
               />
 
@@ -159,13 +172,13 @@ export function WavyPageTransitionProvider({ children }: { children: React.React
                 filter="url(#orange-depth-shadow-strong)"
                 initial={{ d: hiddenBottom }}
                 animate={{
-                  d: [hiddenBottom, ribbon3Rising, fullCover, fullCover, ribbon3Exiting, hiddenTop],
+                  d: [hiddenBottom, ribbon3Rising, fullCover, ribbon3Exiting, hiddenTop],
                 }}
                 transition={{
-                  duration: 1.18,
-                  delay: 0.07,
-                  times: [0, 0.36, 0.5, 0.6, 0.86, 1],
-                  ease: [0.76, 0, 0.24, 1],
+                  duration: 1.2,
+                  delay: 0.06,
+                  times: [0, 0.36, 0.54, 0.86, 1],
+                  ease: [0.65, 0, 0.35, 1],
                 }}
               />
 
@@ -176,17 +189,17 @@ export function WavyPageTransitionProvider({ children }: { children: React.React
                 filter="url(#orange-depth-shadow-strong)"
                 initial={{ d: hiddenBottom }}
                 animate={{
-                  d: [hiddenBottom, ribbon4Rising, fullCover, fullCover, ribbon4Exiting, hiddenTop],
+                  d: [hiddenBottom, ribbon4Rising, fullCover, ribbon4Exiting, hiddenTop],
                 }}
                 transition={{
-                  duration: 1.18,
-                  delay: 0.1,
-                  times: [0, 0.38, 0.52, 0.62, 0.88, 1],
-                  ease: [0.76, 0, 0.24, 1],
+                  duration: 1.2,
+                  delay: 0.09,
+                  times: [0, 0.38, 0.56, 0.88, 1],
+                  ease: [0.65, 0, 0.35, 1],
                 }}
               />
             </svg>
-          </div>
+          </motion.div>
         )}
       </AnimatePresence>
     </WavyTransitionContext.Provider>
