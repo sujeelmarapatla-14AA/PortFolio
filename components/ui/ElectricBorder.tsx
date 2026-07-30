@@ -30,7 +30,8 @@ const ElectricBorder: React.FC<ElectricBorderProps> = ({
 
   // Noise functions
   const random = useCallback((x: number) => {
-    return (Math.sin(x * 12.9898) * 43758.5453) % 1;
+    const tr = Math.sin(x * 12.9898) * 43758.5453;
+    return tr - Math.floor(tr);
   }, []);
 
   const noise2D = useCallback(
@@ -81,7 +82,7 @@ const ElectricBorder: React.FC<ElectricBorderProps> = ({
         }
         y +=
           octaveAmplitude *
-          noise2D(frequency * x + seed * 100, time * frequency * 0.3);
+          (noise2D(frequency * x + seed * 100, time * frequency * 0.3) - 0.5);
         frequency *= lacunarity;
         amplitude *= gain;
       }

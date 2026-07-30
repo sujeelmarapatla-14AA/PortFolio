@@ -39,16 +39,16 @@ export default function Projects() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: index * 0.15 }}
-                className="h-full flex"
+                className="h-full flex flex-col"
               >
                 <ElectricBorder
                   color={electricColor}
                   speed={1.2}
                   chaos={0.15}
                   borderRadius={32}
-                  className="w-full h-full"
+                  className="w-full h-full flex flex-col transition-transform duration-300 hover:-translate-y-1.5"
                 >
-                  <div className={`group relative flex flex-col justify-between p-8 text-white bg-gradient-to-br ${gradientClass} min-h-[440px] h-full shadow-2xl transition-all duration-500 hover:-translate-y-1 rounded-[32px] border border-white/20`}>
+                  <div className={`group relative flex flex-col justify-between p-8 text-white bg-gradient-to-br ${gradientClass} min-h-[440px] h-full flex-1 shadow-2xl rounded-[32px] border border-white/20`}>
                     {/* Background Watermark Number / Icon */}
                     <div
                       aria-hidden="true"
