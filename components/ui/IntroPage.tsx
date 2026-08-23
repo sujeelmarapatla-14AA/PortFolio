@@ -103,9 +103,8 @@ export default function IntroPage({ onEnter }: IntroPageProps) {
                 shuffleTimes={4}
                 stagger={0.03}
                 colorFrom="#ff3b11"
-                colorTo="#111111"
                 triggerOnHover={true}
-                className="font-condensed text-4xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-black tracking-tight text-black leading-none uppercase"
+                className="font-condensed text-4xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-black tracking-tight text-black dark:text-white leading-none uppercase transition-colors"
               />
             </motion.div>
           </main>

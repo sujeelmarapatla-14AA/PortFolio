@@ -86,7 +86,7 @@ const Shuffle: React.FC<ShuffleProps> = ({
         {
           duration: duration,
           ease: ease,
-          color: colorTo || undefined,
+          color: colorTo || "currentColor",
           onUpdate: () => {
             if (count < randomScrambles.length) {
               const currentGlow = randomScrambles[count];
@@ -127,7 +127,7 @@ const Shuffle: React.FC<ShuffleProps> = ({
       onMouseEnter: handleMouseEnter,
     },
     displayedChars.map((char, i) => (
-      <span key={i} className="shuffle-char" style={{ color: colorFrom || "inherit" }}>
+      <span key={i} className="shuffle-char" style={{ color: colorFrom || "currentColor" }}>
         {char}
       </span>
     ))
