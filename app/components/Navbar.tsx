@@ -97,7 +97,12 @@ export default function Navbar() {
         </a>
       </div>
 
-      {/* Floating Center Capsule Navbar with Dark/Light Mode Theme Toggle */}
+      {/* Top Right Theme Toggle (Stays at the top of the home page, does NOT follow on scroll) */}
+      <div className="absolute top-6 right-5 md:right-10 z-40 pointer-events-auto">
+        <ThemeToggle />
+      </div>
+
+      {/* Floating Center Capsule Navbar with Apple GlassSurface Effect */}
       <header className="fixed top-6 left-1/2 -translate-x-1/2 z-50 flex items-center gap-2.5 max-w-[95vw]">
         <GlassSurface
           borderRadius={9999}
@@ -133,9 +138,6 @@ export default function Navbar() {
             })}
           </nav>
         </GlassSurface>
-
-        {/* Sun / Moon Theme Toggle */}
-        <ThemeToggle />
       </header>
     </>
   );

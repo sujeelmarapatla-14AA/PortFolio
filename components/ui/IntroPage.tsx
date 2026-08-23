@@ -6,6 +6,7 @@ import Shuffle from "@/components/ui/Shuffle";
 import Waves from "@/components/ui/Waves";
 import { useWavyTransition } from "@/components/ui/WavyPageTransition";
 import LiquidGlassButton from "@/components/ui/LiquidGlassButton";
+import ThemeToggle from "@/components/ui/ThemeToggle";
 
 interface IntroPageProps {
   onEnter: () => void;
@@ -32,7 +33,7 @@ export default function IntroPage({ onEnter }: IntroPageProps) {
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.5 }}
-          className="fixed inset-0 z-[9990] w-screen h-screen min-h-screen bg-[#e5e5e7] text-black flex flex-col justify-between p-6 md:p-12 overflow-hidden select-none"
+          className="fixed inset-0 z-[9990] w-screen h-screen min-h-screen bg-[#e5e5e7] dark:bg-[#09080d] text-black dark:text-white flex flex-col justify-between p-6 md:p-12 overflow-hidden select-none transition-colors duration-400"
         >
           {/* Background Interactive Waves Canvas */}
           <div className="absolute inset-0 pointer-events-none z-0">
@@ -51,7 +52,7 @@ export default function IntroPage({ onEnter }: IntroPageProps) {
             />
           </div>
 
-          {/* Top Bar: Brand Star & Skip Intro Liquid Glass Button */}
+          {/* Top Bar: Brand Star, Theme Toggle & Skip Intro Liquid Glass Button */}
           <header className="w-full max-w-7xl mx-auto flex items-center justify-between relative z-20">
             <div className="flex items-center gap-2">
               <span className="text-[#ff3b11] text-3xl font-bold">✦</span>
@@ -60,15 +61,19 @@ export default function IntroPage({ onEnter }: IntroPageProps) {
               </span>
             </div>
 
-            {/* Skip Intro Liquid Glass Button */}
-            <LiquidGlassButton
-              onClick={(e: React.MouseEvent) => handleProceed(e)}
-              variant="light"
-              className="px-5 py-2 text-xs font-bold uppercase tracking-widest text-gray-800"
-              aria-label="Skip portfolio intro"
-            >
-              <span>Skip intro ↗</span>
-            </LiquidGlassButton>
+            {/* Top Right Controls: Theme Toggle & Skip Intro Button */}
+            <div className="flex items-center gap-3">
+              <ThemeToggle />
+
+              <LiquidGlassButton
+                onClick={(e: React.MouseEvent) => handleProceed(e)}
+                variant="light"
+                className="px-5 py-2 text-xs font-bold uppercase tracking-widest text-gray-800 dark:text-white"
+                aria-label="Skip portfolio intro"
+              >
+                <span>Skip intro ↗</span>
+              </LiquidGlassButton>
+            </div>
           </header>
 
           {/* Center Quote Display: “DREAM , DESIGN , DEVELOP” */}
