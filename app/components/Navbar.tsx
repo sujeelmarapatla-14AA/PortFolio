@@ -9,6 +9,7 @@ import {
   UserIcon,
   WrenchScrewdriverIcon,
   BriefcaseIcon,
+  AcademicCapIcon,
   EnvelopeIcon,
 } from "@heroicons/react/24/outline";
 
@@ -17,7 +18,7 @@ export default function Navbar() {
   const { triggerTransition } = useWavyTransition();
 
   useEffect(() => {
-    const sections = ["hero", "about", "skills", "projects", "contact"];
+    const sections = ["hero", "about", "skills", "projects", "certifications", "education", "contact"];
     const handleScroll = () => {
       const scrollPosition = window.scrollY + 200;
       for (const sectionId of sections) {
@@ -47,6 +48,8 @@ export default function Navbar() {
         return <WrenchScrewdriverIcon className="w-4 h-4" />;
       case "projects":
         return <BriefcaseIcon className="w-4 h-4" />;
+      case "certifications":
+        return <AcademicCapIcon className="w-4 h-4" />;
       case "contact":
         return <EnvelopeIcon className="w-4 h-4" />;
       default:

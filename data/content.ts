@@ -136,6 +136,45 @@ export const projects = [
   },
 ];
 
+export interface Certification {
+  title: string;
+  issuer: string;
+  date?: string;
+  image: string;
+  credentialUrl?: string;
+}
+
+export const certifications: Certification[] = [
+  {
+    title: "AI Foundation Course",
+    issuer: "JioPC & Jio Institute",
+    date: "2026",
+    image: "/certificates/ai-foundation.png",
+    credentialUrl: "",
+  },
+  {
+    title: "Innovation Practices using Autodesk - Fusion",
+    issuer: "Design Labs - Autodesk Authorized Academic Partner",
+    date: "March 2026",
+    image: "/certificates/autodesk-fusion.jpg",
+    credentialUrl: "",
+  },
+  {
+    title: "Web Development - Workshop Carnival 2.0",
+    issuer: "CIE - MLR Institute of Technology",
+    date: "April 2026",
+    image: "/certificates/web-dev-workshop.jpg",
+    credentialUrl: "",
+  },
+  {
+    title: "MongoDB Basics for Students",
+    issuer: "MongoDB",
+    date: "August 2026",
+    image: "/certificates/mongodb-basics.jpg",
+    credentialUrl: "https://www.credly.com/badges/e2a3e5af-3db9-43e7-b3f4-2aefae156214",
+  },
+];
+
 export const education = {
   institution: "MLR Institute of Technology, Hyderabad",
   degree: "B.Tech in CSE (CSM — AI & Machine Learning)",
@@ -157,6 +196,8 @@ export const footer = {
     { label: "About", href: "#about" },
     { label: "Skills", href: "#skills" },
     { label: "Projects", href: "#projects" },
+    { label: "Certifications", href: "#certifications" },
+    { label: "Education", href: "#education" },
     { label: "Contact", href: "#contact" },
   ],
   builtWith: "Built with Next.js and Tailwind CSS.",
