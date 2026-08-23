@@ -54,13 +54,13 @@ export default function Contact() {
             method="get"
             encType="text/plain"
             onSubmit={handleSubmit}
-            className="bg-white rounded-[28px] p-8 md:p-10 shadow-[0_16px_48px_rgba(0,0,0,0.08)] border border-gray-200/80 space-y-6"
+            className="bg-white dark:bg-[#120F17] rounded-[28px] p-8 md:p-10 shadow-[0_16px_48px_rgba(0,0,0,0.08)] border border-gray-200/80 dark:border-white/15 space-y-6 transition-colors"
           >
             <div className="text-center space-y-2 mb-6">
-              <h3 className="font-condensed text-3xl font-extrabold text-black uppercase tracking-wide">
+              <h3 className="font-condensed text-3xl font-extrabold text-black dark:text-white uppercase tracking-wide">
                 LET&apos;S WORK TOGETHER
               </h3>
-              <p className="text-gray-600 text-sm font-medium">
+              <p className="text-gray-600 dark:text-gray-300 text-sm font-medium">
                 Send a direct email to <span className="font-bold text-[#ff3b11]">{contact.email}</span> or connect via social links below.
               </p>
             </div>
@@ -74,9 +74,9 @@ export default function Contact() {
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="your-email@example.com"
                 required
-                className={`w-full bg-[#f8f8f8] border ${
-                  error ? "border-red-500" : "border-gray-300 focus:border-[#ff3b11]"
-                } rounded-full py-4 pl-14 pr-6 text-black placeholder-gray-400 font-medium focus:outline-none focus:ring-2 focus:ring-[#ff3b11]/30 transition-all shadow-inner`}
+                className={`w-full bg-[#f8f8f8] dark:bg-white/10 border ${
+                  error ? "border-red-500" : "border-gray-300 dark:border-white/20 focus:border-[#ff3b11]"
+                } rounded-full py-4 pl-14 pr-6 text-black dark:text-white placeholder-gray-400 dark:placeholder-gray-500 font-medium focus:outline-none focus:ring-2 focus:ring-[#ff3b11]/30 transition-all shadow-inner`}
               />
             </div>
             {error && <p className="text-red-500 text-xs font-semibold pl-4">Please enter a valid email address.</p>}
@@ -93,7 +93,7 @@ export default function Contact() {
         </div>
 
         {/* 3 Column Subtitle Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 py-8 border-t border-gray-300/80 text-xs md:text-sm font-extrabold tracking-wider uppercase text-gray-700 leading-relaxed text-center md:text-left">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 py-8 border-t border-gray-300/80 dark:border-white/10 text-xs md:text-sm font-extrabold tracking-wider uppercase text-gray-700 dark:text-gray-300 leading-relaxed text-center md:text-left transition-colors">
           <div>
             I&apos;M HERE TO HELP YOU TURN YOUR BRIEF INTO SOMETHING BRILLIANT.
           </div>
@@ -110,7 +110,7 @@ export default function Contact() {
           {/* Circular Drag Me Badge */}
           <motion.div
             whileHover={{ scale: 1.1, rotate: 12 }}
-            className="w-24 h-24 rounded-full bg-white border border-gray-300 shadow-xl flex items-center justify-center p-2 text-center text-[10px] font-extrabold uppercase tracking-widest text-black cursor-grab active:cursor-grabbing select-none"
+            className="w-24 h-24 rounded-full bg-white dark:bg-[#181622] border border-gray-300 dark:border-white/20 shadow-xl flex items-center justify-center p-2 text-center text-[10px] font-extrabold uppercase tracking-widest text-black dark:text-white cursor-grab active:cursor-grabbing select-none transition-colors"
           >
             <span>DRAG ME ✦</span>
           </motion.div>
@@ -122,7 +122,7 @@ export default function Contact() {
             target="_blank"
             rel="noopener noreferrer"
             variant="light"
-            className="px-7 py-3.5 text-xs font-extrabold tracking-wider uppercase text-black"
+            className="px-7 py-3.5 text-xs font-extrabold tracking-wider uppercase text-black dark:text-white"
           >
             <span>GITHUB ↗</span>
           </LiquidGlassButton>
@@ -134,7 +134,7 @@ export default function Contact() {
             target="_blank"
             rel="noopener noreferrer"
             variant="light"
-            className="px-7 py-3.5 text-xs font-extrabold tracking-wider uppercase text-black"
+            className="px-7 py-3.5 text-xs font-extrabold tracking-wider uppercase text-black dark:text-white"
           >
             <span>LINKEDIN ↗</span>
           </LiquidGlassButton>
@@ -146,7 +146,7 @@ export default function Contact() {
             target="_blank"
             rel="noopener noreferrer"
             variant="light"
-            className="px-7 py-3.5 text-xs font-extrabold tracking-wider uppercase text-black"
+            className="px-7 py-3.5 text-xs font-extrabold tracking-wider uppercase text-black dark:text-white"
           >
             <span>INSTAGRAM ↗</span>
           </LiquidGlassButton>
@@ -156,7 +156,7 @@ export default function Contact() {
             as="a"
             href={`mailto:${contact.email}`}
             variant="light"
-            className="px-7 py-3.5 text-xs font-extrabold tracking-wider uppercase text-black"
+            className="px-7 py-3.5 text-xs font-extrabold tracking-wider uppercase text-black dark:text-white"
           >
             <span>EMAIL ME ↗</span>
           </LiquidGlassButton>
