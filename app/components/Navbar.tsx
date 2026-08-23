@@ -5,6 +5,7 @@ import { cn } from "@/lib/utils";
 import { footer } from "@/data/content";
 import { useWavyTransition } from "@/components/ui/WavyPageTransition";
 import GlassSurface from "@/components/ui/GlassSurface";
+import ThemeToggle from "@/components/ui/ThemeToggle";
 import {
   HomeIcon,
   UserIcon,
@@ -75,7 +76,7 @@ export default function Navbar() {
 
   return (
     <>
-      {/* Top Left Text Logo (Positioned at top of page only) */}
+      {/* Top Left Text Logo */}
       <div className="absolute top-6 left-5 md:left-10 z-40 flex items-center gap-2 pointer-events-auto">
         <a
           href="#hero"
@@ -96,8 +97,8 @@ export default function Navbar() {
         </a>
       </div>
 
-      {/* Floating Center Capsule Navbar with Apple GlassSurface Effect */}
-      <header className="fixed top-6 left-1/2 -translate-x-1/2 z-50">
+      {/* Floating Center Capsule Navbar with Dark/Light Mode Theme Toggle */}
+      <header className="fixed top-6 left-1/2 -translate-x-1/2 z-50 flex items-center gap-2.5 max-w-[95vw]">
         <GlassSurface
           borderRadius={9999}
           backgroundOpacity={0.2}
@@ -105,7 +106,7 @@ export default function Navbar() {
           brightness={55}
           width="auto"
           height="auto"
-          className="shadow-[0_16px_48px_rgba(0,0,0,0.15)] border border-white/80 p-1"
+          className="shadow-[0_16px_48px_rgba(0,0,0,0.15)] border border-white/80 dark:border-white/20 p-1"
         >
           <nav
             className="flex items-center gap-1"
@@ -119,10 +120,10 @@ export default function Navbar() {
                   href={item.href}
                   onClick={(e) => handleNavClick(e, item.id)}
                   className={cn(
-                    "cursor-target flex items-center gap-2 px-4 md:px-5 py-2 rounded-full text-xs md:text-sm font-semibold transition-all duration-300 select-none",
+                    "cursor-target flex items-center gap-2 px-3 md:px-5 py-2 rounded-full text-xs md:text-sm font-semibold transition-all duration-300 select-none",
                     isActive
                       ? "bg-[#ff3b11] text-white shadow-md shadow-[#ff3b11]/30"
-                      : "text-gray-800 hover:text-black hover:bg-white/60"
+                      : "text-gray-800 dark:text-gray-200 hover:text-black dark:hover:text-white hover:bg-white/60 dark:hover:bg-white/10"
                   )}
                 >
                   {getIcon(item.label)}
@@ -132,6 +133,9 @@ export default function Navbar() {
             })}
           </nav>
         </GlassSurface>
+
+        {/* Sun / Moon Theme Toggle */}
+        <ThemeToggle />
       </header>
     </>
   );

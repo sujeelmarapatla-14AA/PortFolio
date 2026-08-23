@@ -69,7 +69,7 @@ export default function About() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="lg:col-span-5 bg-[#f4f4f4] rounded-[28px] border border-gray-300/80 p-6 md:p-8 flex flex-col items-center justify-center relative overflow-hidden shadow-lg min-h-[420px]"
+            className="lg:col-span-5 bg-[#f4f4f4] dark:bg-[#120F17] rounded-[28px] border border-gray-300/80 dark:border-white/10 p-6 md:p-8 flex flex-col items-center justify-center relative overflow-hidden shadow-lg min-h-[420px] transition-colors"
           >
             {/* Hanging Lanyard Strap Design */}
             <div className="flex flex-col items-center mb-3">
@@ -80,9 +80,9 @@ export default function About() {
             </div>
 
             {/* Student ID Card Container */}
-            <div className="w-full max-w-sm bg-white rounded-3xl p-6 border-2 border-gray-200/90 shadow-2xl relative overflow-hidden group hover:scale-[1.02] transition-transform duration-500 cursor-target">
+            <div className="w-full max-w-sm bg-white dark:bg-[#181622] rounded-3xl p-6 border-2 border-gray-200/90 dark:border-white/20 shadow-2xl relative overflow-hidden group hover:scale-[1.02] transition-all duration-500 cursor-target">
               {/* Top Card Header: MLRIT Logo & Specialization Badge */}
-              <div className="flex items-center justify-between gap-3 pb-4 mb-4 border-b border-gray-200">
+              <div className="flex items-center justify-between gap-3 pb-4 mb-4 border-b border-gray-200 dark:border-white/10">
                 <Image
                   src="/mlrit-logo.png"
                   alt="MLR Institute of Technology Logo"
@@ -97,7 +97,7 @@ export default function About() {
               </div>
 
               {/* Photo in Premium Studio Frame with Glow Ring */}
-              <div className="relative w-full h-56 md:h-64 rounded-2xl overflow-hidden border-4 border-white shadow-xl ring-2 ring-[#ff3b11]/30 mb-4 bg-gradient-to-b from-[#182333] via-[#0f1724] to-[#0a0f18] group-hover:ring-[#ff3b11] transition-all duration-500">
+              <div className="relative w-full h-56 md:h-64 rounded-2xl overflow-hidden border-4 border-white dark:border-gray-800 shadow-xl ring-2 ring-[#ff3b11]/30 mb-4 bg-gradient-to-b from-[#182333] via-[#0f1724] to-[#0a0f18] group-hover:ring-[#ff3b11] transition-all duration-500">
                 <Image
                   src="/sujeel-photo.jpg"
                   alt={name}
@@ -110,7 +110,7 @@ export default function About() {
               {/* Student Credentials & Details with Roll No */}
               <div className="space-y-2 text-left">
                 <div className="flex items-center justify-between gap-2">
-                  <h4 className="font-sans text-xl font-extrabold text-black">
+                  <h4 className="font-sans text-xl font-extrabold text-black dark:text-white">
                     {name}
                   </h4>
                   <span className="text-[10px] font-mono font-extrabold text-white bg-[#ff3b11] px-2.5 py-0.5 rounded-md shadow-sm">
@@ -121,11 +121,11 @@ export default function About() {
                   <p className="font-bold text-[#ff3b11] tracking-wide uppercase">
                     B.Tech CSE (AI & ML)
                   </p>
-                  <span className="text-[10px] font-mono font-extrabold text-gray-800 bg-gray-100 px-2 py-0.5 rounded border border-gray-300">
+                  <span className="text-[10px] font-mono font-extrabold text-gray-800 dark:text-gray-200 bg-gray-100 dark:bg-white/10 px-2 py-0.5 rounded border border-gray-300 dark:border-white/20">
                     HT NO: 25R21A6637
                   </span>
                 </div>
-                <p className="text-[11px] font-medium text-gray-500">
+                <p className="text-[11px] font-medium text-gray-500 dark:text-gray-400">
                   MLR Institute of Technology, Hyderabad
                 </p>
               </div>

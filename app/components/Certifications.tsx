@@ -49,7 +49,7 @@ export default function Certifications() {
           <h2 className="font-devanagari text-5xl md:text-6xl text-[#ff3b11] tracking-wide font-normal">
             certifications
           </h2>
-          <p className="text-xs md:text-sm text-gray-600 font-medium mt-2 max-w-xl">
+          <p className="text-xs md:text-sm text-gray-600 dark:text-gray-400 font-medium mt-2 max-w-xl transition-colors">
             Courses & credentials I've completed
           </p>
         </div>

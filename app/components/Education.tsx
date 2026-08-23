@@ -25,7 +25,7 @@ export default function Education() {
           <h2 className="font-devanagari text-5xl md:text-6xl text-[#ff3b11] tracking-wide font-normal">
             education
           </h2>
-          <p className="text-xs md:text-sm text-gray-600 font-medium mt-2 max-w-xl">
+          <p className="text-xs md:text-sm text-gray-600 dark:text-gray-400 font-medium mt-2 max-w-xl transition-colors">
             My academic journey and qualifications
           </p>
         </div>
@@ -50,18 +50,18 @@ export default function Education() {
                   </div>
 
                   <div className="space-y-1 md:space-y-2">
-                    <h3 className="font-sans text-xl md:text-2xl font-extrabold text-black tracking-tight group-hover:text-[#ff3b11] transition-colors">
+                    <h3 className="font-sans text-xl md:text-2xl font-extrabold text-black dark:text-white tracking-tight group-hover:text-[#ff3b11] transition-colors">
                       {item.institution}
                     </h3>
-                    <p className="text-xs md:text-sm font-semibold text-gray-700">
+                    <p className="text-xs md:text-sm font-semibold text-gray-700 dark:text-gray-300">
                       {item.degree}
                     </p>
                   </div>
                 </div>
 
                 {/* Timeline Badge */}
-                <div className="flex items-center gap-3 w-full md:w-auto justify-start md:justify-end pt-3 md:pt-0 border-t md:border-t-0 border-gray-300/60">
-                  <span className="px-4 py-2 rounded-full bg-[#111111] text-white text-xs md:text-sm font-extrabold tracking-wider uppercase shadow-md">
+                <div className="flex items-center gap-3 w-full md:w-auto justify-start md:justify-end pt-3 md:pt-0 border-t md:border-t-0 border-gray-300/60 dark:border-white/10">
+                  <span className="px-4 py-2 rounded-full bg-[#111111] dark:bg-white/10 text-white text-xs md:text-sm font-extrabold tracking-wider uppercase shadow-md border border-transparent dark:border-white/20">
                     {item.graduation}
                   </span>
                 </div>

@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 @theme inline {
   --color-background: #e5e5e7;
   --color-foreground: #111111;
@@ -29,10 +31,18 @@
   position: relative;
 }
 
+html.dark .bg-perspective-grid {
+  background-color: #0b0a0f;
+}
+
 /* Outline Text Effect */
 .text-outline-gray {
   color: transparent;
   -webkit-text-stroke: 1.5px rgba(0, 0, 0, 0.15);
+}
+
+html.dark .text-outline-gray {
+  -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.2);
 }
 
 .text-outline-orange {
@@ -72,6 +82,10 @@
   inset: 0;
   background: rgba(255, 255, 255, 0.55);
   pointer-events: none;
+}
+
+html.dark .liquidGlass-tint {
+  background: rgba(18, 15, 23, 0.75);
 }
 
 .liquidGlass-tint-orange {
@@ -161,13 +175,20 @@
   outline-color: #ff3b11;
 }
 
-/* Smooth Scrolling */
+/* Smooth Scrolling & Mode Transitions */
 html {
   scroll-behavior: smooth;
+  transition: background-color 0.4s ease, color 0.4s ease;
 }
 
 body {
   background-color: var(--color-background);
   color: var(--color-foreground);
   font-family: var(--font-sans);
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+html.dark body {
+  background-color: #09080d;
+  color: #f3f4f6;
 }

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Plus_Jakarta_Sans, Bebas_Neue, Caveat, Rozha_One } from "next/font/google";
 import "./globals.css";
 import { name, role } from "@/data/content";
+import { ThemeProvider } from "@/components/ui/ThemeProvider";
 
 const jakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
@@ -79,9 +80,9 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <body
-        className={`${jakarta.variable} ${bebas.variable} ${caveat.variable} ${rozha.variable} font-sans bg-[#e5e5e7] text-[#111111] antialiased selection:bg-[#ff3b11]/30 selection:text-[#ff3b11] overflow-x-hidden`}
+        className={`${jakarta.variable} ${bebas.variable} ${caveat.variable} ${rozha.variable} font-sans bg-[#e5e5e7] dark:bg-[#09080d] text-[#111111] dark:text-[#f3f4f6] antialiased selection:bg-[#ff3b11]/30 selection:text-[#ff3b11] overflow-x-hidden transition-colors duration-400`}
       >
-        {children}
+        <ThemeProvider>{children}</ThemeProvider>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
