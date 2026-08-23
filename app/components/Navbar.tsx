@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { cn } from "@/lib/utils";
 import { footer } from "@/data/content";
 import { useWavyTransition } from "@/components/ui/WavyPageTransition";
+import GlassSurface from "@/components/ui/GlassSurface";
 import {
   HomeIcon,
   UserIcon,
@@ -95,14 +96,19 @@ export default function Navbar() {
         </a>
       </div>
 
-      {/* Floating Center Capsule Navbar with Liquid Glass Effect */}
+      {/* Floating Center Capsule Navbar with Apple GlassSurface Effect */}
       <header className="fixed top-6 left-1/2 -translate-x-1/2 z-50">
-        <div className="liquidGlass-wrapper rounded-full p-1.5 border border-white/80 shadow-[0_12px_40px_rgba(0,0,0,0.12)]">
-          <div className="liquidGlass-effect" />
-          <div className="liquidGlass-tint" />
-          <div className="liquidGlass-shine" />
+        <GlassSurface
+          borderRadius={9999}
+          backgroundOpacity={0.2}
+          blur={16}
+          brightness={55}
+          width="auto"
+          height="auto"
+          className="shadow-[0_16px_48px_rgba(0,0,0,0.15)] border border-white/80 p-1"
+        >
           <nav
-            className="liquidGlass-content flex items-center gap-1"
+            className="flex items-center gap-1"
             aria-label="Primary Navigation"
           >
             {navItems.map((item) => {
@@ -116,7 +122,7 @@ export default function Navbar() {
                     "cursor-target flex items-center gap-2 px-4 md:px-5 py-2 rounded-full text-xs md:text-sm font-semibold transition-all duration-300 select-none",
                     isActive
                       ? "bg-[#ff3b11] text-white shadow-md shadow-[#ff3b11]/30"
-                      : "text-gray-700 hover:text-black hover:bg-white/60"
+                      : "text-gray-800 hover:text-black hover:bg-white/60"
                   )}
                 >
                   {getIcon(item.label)}
@@ -125,7 +131,7 @@ export default function Navbar() {
               );
             })}
           </nav>
-        </div>
+        </GlassSurface>
       </header>
     </>
   );

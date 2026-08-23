@@ -1,5 +1,6 @@
 import { education } from "@/data/content";
 import SectionWrapper from "./SectionWrapper";
+import GlassSurface from "@/components/ui/GlassSurface";
 import { AcademicCapIcon } from "@heroicons/react/24/solid";
 
 export default function Education() {
@@ -13,31 +14,40 @@ export default function Education() {
           </h2>
         </div>
 
-        {/* Studio Redesigned Education Card */}
-        <div className="max-w-4xl mx-auto bg-white rounded-[28px] border border-gray-300/80 p-8 md:p-12 shadow-[0_16px_48px_rgba(0,0,0,0.06)] flex flex-col md:flex-row items-center justify-between gap-8 group hover:-translate-y-1 transition-all duration-300">
-          <div className="flex items-center gap-6 text-left w-full md:w-auto">
-            {/* Academic Icon Badge */}
-            <div className="w-16 h-16 rounded-2xl bg-[#ff3b11]/10 border border-[#ff3b11]/20 flex items-center justify-center text-[#ff3b11] flex-shrink-0 shadow-sm">
-              <AcademicCapIcon className="w-9 h-9" />
+        {/* Studio Redesigned Glass Surface Education Card */}
+        <GlassSurface
+          borderRadius={28}
+          backgroundOpacity={0.3}
+          blur={16}
+          width="100%"
+          height="auto"
+          className="max-w-4xl mx-auto shadow-[0_16px_48px_rgba(0,0,0,0.08)] transition-all duration-300 hover:-translate-y-1 group"
+        >
+          <div className="w-full flex flex-col md:flex-row items-center justify-between gap-8 p-4 md:p-6">
+            <div className="flex items-center gap-6 text-left w-full md:w-auto">
+              {/* Academic Icon Badge */}
+              <div className="w-16 h-16 rounded-2xl bg-[#ff3b11]/10 border border-[#ff3b11]/20 flex items-center justify-center text-[#ff3b11] flex-shrink-0 shadow-sm">
+                <AcademicCapIcon className="w-9 h-9" />
+              </div>
+
+              <div className="space-y-2">
+                <h3 className="font-sans text-2xl md:text-3xl font-extrabold text-black tracking-tight group-hover:text-[#ff3b11] transition-colors">
+                  {education.institution}
+                </h3>
+                <p className="text-sm md:text-base font-semibold text-gray-700">
+                  {education.degree}
+                </p>
+              </div>
             </div>
 
-            <div className="space-y-2">
-              <h3 className="font-sans text-2xl md:text-3xl font-extrabold text-black tracking-tight group-hover:text-[#ff3b11] transition-colors">
-                {education.institution}
-              </h3>
-              <p className="text-sm md:text-base font-semibold text-gray-700">
-                {education.degree}
-              </p>
+            {/* Timeline Badge */}
+            <div className="flex items-center gap-3 w-full md:w-auto justify-start md:justify-end pt-4 md:pt-0 border-t md:border-t-0 border-gray-300/60">
+              <span className="px-5 py-2.5 rounded-full bg-[#111111] text-white text-xs md:text-sm font-extrabold tracking-wider uppercase shadow-md">
+                {education.graduation}
+              </span>
             </div>
           </div>
-
-          {/* Timeline Badge (CGPA removed as requested) */}
-          <div className="flex items-center gap-3 w-full md:w-auto justify-start md:justify-end pt-4 md:pt-0 border-t md:border-t-0 border-gray-200">
-            <span className="px-5 py-2.5 rounded-full bg-[#111111] text-white text-xs md:text-sm font-extrabold tracking-wider uppercase shadow-md">
-              {education.graduation}
-            </span>
-          </div>
-        </div>
+        </GlassSurface>
       </div>
     </SectionWrapper>
   );
