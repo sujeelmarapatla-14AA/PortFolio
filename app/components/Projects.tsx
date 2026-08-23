@@ -61,7 +61,7 @@ export default function Projects() {
 
                     {/* Top Section: Action Button or Number */}
                     <div className="relative z-10 flex items-center justify-between">
-                      <span className="text-xs font-extrabold tracking-widest uppercase bg-black/30 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-white/20">
+                      <span className="text-xs font-extrabold tracking-widest uppercase bg-black/40 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-white/30 text-white shadow-sm">
                         Project 0{index + 1}
                       </span>
 
@@ -71,21 +71,21 @@ export default function Projects() {
                           href={project.liveUrl}
                           target="_blank"
                           rel="noopener noreferrer"
-                          variant="light"
-                          className="w-11 h-11 !p-0 rounded-full text-white hover:text-black border border-white/40"
+                          variant="dark"
+                          className="w-11 h-11 !p-0 rounded-full text-white border border-white/50 shadow-md"
                         >
-                          <ArrowRightIcon className="w-5 h-5" />
+                          <ArrowRightIcon className="w-5 h-5 text-white" />
                         </LiquidGlassButton>
                       ) : (
-                        <div className="w-11 h-11 rounded-full bg-white/10 flex items-center justify-center text-white/60 border border-white/15">
-                          <ArrowRightIcon className="w-5 h-5 opacity-40" />
+                        <div className="w-11 h-11 rounded-full bg-black/40 flex items-center justify-center text-white/60 border border-white/20">
+                          <ArrowRightIcon className="w-5 h-5 opacity-40 text-white" />
                         </div>
                       )}
                     </div>
 
                     {/* Middle Content */}
                     <div className="relative z-10 my-auto py-6">
-                      <h3 className="font-sans text-2xl md:text-3xl font-extrabold text-white mb-3 group-hover:translate-x-1 transition-transform">
+                      <h3 className="font-sans text-2xl md:text-3xl font-extrabold text-white mb-3 group-hover:translate-x-1 transition-transform drop-shadow-sm">
                         {project.title}
                       </h3>
                       <p className="text-white/90 text-sm md:text-base leading-relaxed font-normal">
@@ -99,7 +99,7 @@ export default function Projects() {
                         {project.stack.map((tag) => (
                           <span
                             key={tag}
-                            className="px-3.5 py-1 text-xs font-semibold text-white bg-black/30 rounded-full border border-white/20 backdrop-blur-md"
+                            className="px-3.5 py-1 text-xs font-semibold text-white bg-black/40 rounded-full border border-white/25 backdrop-blur-md shadow-sm"
                           >
                             {tag}
                           </span>
@@ -112,11 +112,11 @@ export default function Projects() {
                           href={project.codeUrl}
                           target="_blank"
                           rel="noopener noreferrer"
-                          variant="light"
-                          className="px-4 py-2 text-[11px] font-extrabold uppercase tracking-wider text-black border border-white/40"
+                          variant="dark"
+                          className="px-4 py-2.5 text-[11px] font-extrabold uppercase tracking-wider text-white border border-white/40 shadow-lg bg-black/60 hover:bg-black/80"
                         >
-                          <CodeBracketIcon className="w-4 h-4" />
-                          <span>Code Repository</span>
+                          <CodeBracketIcon className="w-4 h-4 text-white" />
+                          <span className="text-white font-bold">Code Repository</span>
                         </LiquidGlassButton>
                         {project.liveUrl && project.liveUrl !== "#" && (
                           <LiquidGlassButton
@@ -124,11 +124,11 @@ export default function Projects() {
                             href={project.liveUrl}
                             target="_blank"
                             rel="noopener noreferrer"
-                            variant="light"
-                            className="px-4 py-2 text-[11px] font-extrabold uppercase tracking-wider text-black border border-white/40"
+                            variant="dark"
+                            className="px-4 py-2.5 text-[11px] font-extrabold uppercase tracking-wider text-white border border-white/40 shadow-lg bg-black/60 hover:bg-black/80"
                           >
-                            <ArrowTopRightOnSquareIcon className="w-4 h-4" />
-                            <span>Live Demo</span>
+                            <ArrowTopRightOnSquareIcon className="w-4 h-4 text-white" />
+                            <span className="text-white font-bold">Live Demo</span>
                           </LiquidGlassButton>
                         )}
                       </div>
