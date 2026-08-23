@@ -5,6 +5,7 @@ import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { certifications, Certification } from "@/data/content";
 import SectionWrapper from "./SectionWrapper";
+import BorderGlow from "@/components/ui/BorderGlow";
 import {
   MagnifyingGlassPlusIcon,
   XMarkIcon,
@@ -64,86 +65,97 @@ export default function Certifications() {
               transition={{ duration: 0.5, delay: index * 0.1 }}
               className="h-full flex flex-col"
             >
-              <div
-                className="group relative flex flex-col justify-between h-full bg-white rounded-[28px] border border-gray-300/80 p-5 shadow-[0_10px_30px_rgba(0,0,0,0.05)] transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(0,0,0,0.12)] cursor-target overflow-hidden"
+              <BorderGlow
+                edgeSensitivity={30}
+                glowColor="40 80 80"
+                backgroundColor="#120F17"
+                borderRadius={28}
+                glowRadius={40}
+                glowIntensity={1}
+                coneSpread={25}
+                animated={false}
+                colors={["#c084fc", "#f472b6", "#38bdf8"]}
+                className="w-full h-full flex flex-col transition-transform duration-300 hover:-translate-y-2"
               >
-                {/* Upper Image Thumbnail Container with fixed 4:3 Aspect Ratio */}
-                <div
-                  className="relative w-full aspect-[4/3] rounded-2xl overflow-hidden bg-gray-100 border border-gray-200/80 cursor-pointer group/img"
-                  onClick={() => setSelectedCert(cert)}
-                  tabIndex={0}
-                  role="button"
-                  aria-label={`View full certificate for ${cert.title}`}
-                  onKeyDown={(e) => {
-                    if (e.key === "Enter" || e.key === " ") {
-                      e.preventDefault();
-                      setSelectedCert(cert);
-                    }
-                  }}
-                >
-                  <Image
-                    src={cert.image}
-                    alt={cert.title}
-                    fill
-                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                    className="object-cover transition-transform duration-500 group-hover/img:scale-105"
-                  />
-                  {/* Hover Overlay with Lightbox Icon */}
-                  <div className="absolute inset-0 bg-black/40 opacity-0 group-hover/img:opacity-100 transition-opacity duration-300 flex items-center justify-center backdrop-blur-[2px]">
-                    <div className="bg-white/90 text-black px-4 py-2 rounded-full text-xs font-bold flex items-center gap-2 shadow-lg transform translate-y-2 group-hover/img:translate-y-0 transition-transform duration-300">
-                      <MagnifyingGlassPlusIcon className="w-4 h-4 text-[#ff3b11]" />
-                      <span>View Full Image</span>
+                <div className="group relative flex flex-col justify-between h-full p-5 cursor-target text-white">
+                  {/* Upper Image Thumbnail Container with fixed 4:3 Aspect Ratio */}
+                  <div
+                    className="relative w-full aspect-[4/3] rounded-2xl overflow-hidden bg-black/40 border border-white/15 cursor-pointer group/img"
+                    onClick={() => setSelectedCert(cert)}
+                    tabIndex={0}
+                    role="button"
+                    aria-label={`View full certificate for ${cert.title}`}
+                    onKeyDown={(e) => {
+                      if (e.key === "Enter" || e.key === " ") {
+                        e.preventDefault();
+                        setSelectedCert(cert);
+                      }
+                    }}
+                  >
+                    <Image
+                      src={cert.image}
+                      alt={cert.title}
+                      fill
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                      className="object-cover transition-transform duration-500 group-hover/img:scale-105"
+                    />
+                    {/* Hover Overlay with Lightbox Icon */}
+                    <div className="absolute inset-0 bg-black/50 opacity-0 group-hover/img:opacity-100 transition-opacity duration-300 flex items-center justify-center backdrop-blur-[2px]">
+                      <div className="bg-white/90 text-black px-4 py-2 rounded-full text-xs font-bold flex items-center gap-2 shadow-lg transform translate-y-2 group-hover/img:translate-y-0 transition-transform duration-300">
+                        <MagnifyingGlassPlusIcon className="w-4 h-4 text-[#ff3b11]" />
+                        <span>View Full Image</span>
+                      </div>
                     </div>
                   </div>
-                </div>
 
-                {/* Card Content Section */}
-                <div className="flex flex-col flex-1 pt-5 pb-2 justify-between">
-                  <div>
-                    {/* Header line: Issuer & Date */}
-                    <div className="flex items-center justify-between gap-2 mb-2">
-                      <span className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#ff3b11] bg-[#ff3b11]/10 px-3 py-1 rounded-full border border-[#ff3b11]/20">
-                        <AcademicCapIcon className="w-3.5 h-3.5" />
-                        {cert.issuer}
-                      </span>
-                      {cert.date && (
-                        <span className="text-[11px] font-mono font-medium text-gray-500">
-                          {cert.date}
+                  {/* Card Content Section */}
+                  <div className="flex flex-col flex-1 pt-5 pb-1 justify-between">
+                    <div>
+                      {/* Header line: Issuer & Date */}
+                      <div className="flex items-center justify-between gap-2 mb-2">
+                        <span className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#ff3b11] bg-[#ff3b11]/15 px-3 py-1 rounded-full border border-[#ff3b11]/30">
+                          <AcademicCapIcon className="w-3.5 h-3.5" />
+                          {cert.issuer}
                         </span>
+                        {cert.date && (
+                          <span className="text-[11px] font-mono font-medium text-gray-400">
+                            {cert.date}
+                          </span>
+                        )}
+                      </div>
+
+                      {/* Certificate Title */}
+                      <h3 className="font-sans text-lg md:text-xl font-extrabold text-white mt-2 leading-snug group-hover:text-[#ff3b11] transition-colors">
+                        {cert.title}
+                      </h3>
+                    </div>
+
+                    {/* Actions / Buttons Footer */}
+                    <div className="pt-4 mt-4 border-t border-white/10 flex items-center justify-between gap-2">
+                      <button
+                        onClick={() => setSelectedCert(cert)}
+                        className="cursor-target text-xs font-bold text-gray-300 hover:text-[#ff3b11] flex items-center gap-1.5 transition-colors focus-ring rounded-lg px-2 py-1"
+                      >
+                        <MagnifyingGlassPlusIcon className="w-4 h-4 text-[#ff3b11]" />
+                        <span>View Certificate</span>
+                      </button>
+
+                      {cert.credentialUrl && (
+                        <a
+                          href={cert.credentialUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="cursor-target text-xs font-bold text-sky-400 hover:text-sky-300 flex items-center gap-1 transition-colors focus-ring rounded-lg px-2 py-1"
+                          aria-label={`Verify credential for ${cert.title}`}
+                        >
+                          <span>Verify</span>
+                          <ArrowTopRightOnSquareIcon className="w-3.5 h-3.5" />
+                        </a>
                       )}
                     </div>
-
-                    {/* Certificate Title */}
-                    <h3 className="font-sans text-lg md:text-xl font-extrabold text-black mt-2 leading-snug group-hover:text-[#ff3b11] transition-colors">
-                      {cert.title}
-                    </h3>
-                  </div>
-
-                  {/* Actions / Buttons Footer */}
-                  <div className="pt-4 mt-4 border-t border-gray-100 flex items-center justify-between gap-2">
-                    <button
-                      onClick={() => setSelectedCert(cert)}
-                      className="cursor-target text-xs font-bold text-gray-800 hover:text-[#ff3b11] flex items-center gap-1.5 transition-colors focus-ring rounded-lg px-2 py-1"
-                    >
-                      <MagnifyingGlassPlusIcon className="w-4 h-4 text-[#ff3b11]" />
-                      <span>View Certificate</span>
-                    </button>
-
-                    {cert.credentialUrl && (
-                      <a
-                        href={cert.credentialUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="cursor-target text-xs font-bold text-blue-600 hover:text-blue-800 flex items-center gap-1 transition-colors focus-ring rounded-lg px-2 py-1"
-                        aria-label={`Verify credential for ${cert.title}`}
-                      >
-                        <span>Verify</span>
-                        <ArrowTopRightOnSquareIcon className="w-3.5 h-3.5" />
-                      </a>
-                    )}
                   </div>
                 </div>
-              </div>
+              </BorderGlow>
             </motion.div>
           ))}
         </div>
@@ -168,7 +180,7 @@ export default function Certifications() {
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.9, opacity: 0 }}
               transition={{ type: "spring", damping: 25, stiffness: 300 }}
-              className="relative max-w-4xl w-full bg-[#111111] text-white rounded-[28px] border border-white/20 p-6 sm:p-8 shadow-2xl overflow-hidden flex flex-col max-h-[90vh]"
+              className="relative max-w-4xl w-full bg-[#120F17] text-white rounded-[28px] border border-white/20 p-6 sm:p-8 shadow-2xl overflow-hidden flex flex-col max-h-[90vh]"
               onClick={(e) => e.stopPropagation()}
             >
               {/* Close Button */}
