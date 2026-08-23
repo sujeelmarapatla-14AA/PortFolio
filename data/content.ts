@@ -175,12 +175,31 @@ export const certifications: Certification[] = [
   },
 ];
 
-export const education = {
-  institution: "MLR Institute of Technology, Hyderabad",
-  degree: "B.Tech in CSE (CSM — AI & Machine Learning)",
-  graduation: "2025 - 2029",
-  cgpa: "",
-};
+export interface EducationItem {
+  institution: string;
+  degree: string;
+  graduation: string;
+}
+
+export const educationList: EducationItem[] = [
+  {
+    institution: "MLR Institute of Technology, Hyderabad",
+    degree: "B.Tech in CSE (CSM — AI & Machine Learning)",
+    graduation: "2025 - 2029",
+  },
+  {
+    institution: "Sri Chaitanya Junior College",
+    degree: "Intermediate (MPC Course)",
+    graduation: "2023 - 2025",
+  },
+  {
+    institution: "Nava Jyothi High School",
+    degree: "Schooling (SSC / Secondary Education)",
+    graduation: "2018 - 2023",
+  },
+];
+
+export const education = educationList[0];
 
 export const contact = {
   email: "sujeelmarapatla@gmail.com",
